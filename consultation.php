@@ -141,8 +141,8 @@ $con=mysqli_connect('localhost','root','','online_consultation');
           <div class="row">
 
                <div class="col-md-4 col-sm-4">
-                      <h4 class="dis">Pending</h4>
-
+                      <h3 style="color: #a5c422;">Pending</h3>
+                      <br>
                      <?php
 
                       $query="SELECT * FROM `consultation`  where  `flag`=0 ";
@@ -178,7 +178,8 @@ $con=mysqli_connect('localhost','root','','online_consultation');
 
                      <?php }} ?>
 
-                        <h4 class="dis">Answered</h4>
+                        <h3 style="color: #a5c422;">Answered Querries</h3>
+                        <br>
                      <?php
                             
                       $query="SELECT * FROM `consultation`  where  `flag`=1 ";
