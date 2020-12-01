@@ -1,7 +1,39 @@
+<?php
+session_start();
+$con=mysqli_connect('localhost','root','','healthcare');
+if(isset($_GET['id']))
+{
+    $id = $_GET['id'];
+$query=$con->prepare("SELECT * FROM `labtest` WHERE `id`='$id'");
+$query->execute();
+ $run= $query->get_result();
+ $row=$run->fetch_assoc();
+}
+if(isset($_POST['submit']))
+{
+    $name=$_POST['name'];
+    $age=$_POST['age'];
+    $date=$_POST['date'];
+    $email=$_POST['email'];
+    $test=$_POST['test'];
+    $phn_no=$_POST['phone'];
+    $message=$_POST['message'];
+    $query1=$con->prepare("INSERT INTO `labbook`(`lab_id`, `name`, `age`, `date`, `test`, `ph_no`, `email`, `message`) VALUES (?,?,?,?,?,?,?,?)");
+    $query1->bind_param("ssssssss",$id, $name,$age,$date,$test,$phn_no,$email,$message);
+    if($query1->execute())
+    {
+        echo '<script>alert("Appointment Booked Sucessfully")</script>';
+    }
+    else
+    {
+        echo '<script>alert("Error in making appointment")</script>';
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
+     <link rel="icon" type="image/png" sizes="16x16" href="images/icon.jpg">
      <title>Health - Medical Website Template</title>
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -64,13 +96,37 @@
          </div>
     </section>
 
+
+    
+
+
 <!-- MAKE AN APPOINTMENT -->
 <section id="appointment" data-stellar-background-ratio="3">
      <div class="container">
+     
+     <div class="row">
+     <div class="col-md-2 col-sm-2"></div>
+<div class="col-md-2 col-sm-2" >
+<h1><i class="fa fa-medkit"></i></h1>
+</div>
+<div class="col-md-5 col-sm-5" style="background-color: #f0f0f0;">
+    <h3><?php echo $row['name']; ?></h3>
+    <h5><b><?php echo $row['ph_no']; ?></b></h5>
+    <h5><?php echo $row['mail']; ?></h5>
+    <h5><?php echo $row['city']; ?></h5>
+    
+</div>
+<div class="col-md-3 col-sm-3"></div>
+</div>
+
+<div class="col-md-12 col-sm-12 border-top">
           <div class="row">
 
                <div class="col-md-6 col-sm-6">
-                    <img src="images/appointment-image.jpg" class="img-responsive" alt="">
+               <br>
+                    <br>
+                    <br>
+                    <img src="images/appointment-image1.jpg" class="img-responsive" alt="">
                </div>
 
                <div class="col-md-6 col-sm-6">
@@ -79,41 +135,56 @@
 
                          <!-- SECTION TITLE -->
                          <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
-                              <h2>Make an appointment</h2>
+                              <h2>Lab Booking</h2>
                          </div>
 
                          <div class="wow fadeInUp" data-wow-delay="0.8s">
                               <div class="col-md-6 col-sm-6">
                                    <label for="name">Name</label>
-                                   <input type="text" class="form-control" id="name" name="name" placeholder="Full Name">
+                                   <input type="text" class="form-control" id="name"  name="name" placeholder="Full Name">
                               </div>
 
                               <div class="col-md-6 col-sm-6">
-                                   <label for="email">Email</label>
-                                   <input type="email" class="form-control" id="email" name="email" placeholder="Your Email">
+                                   <label for="age">Age</label>
+                                   <input type="text" class="form-control" id="age" name="age" placeholder="Your Age">
                               </div>
 
                               <div class="col-md-6 col-sm-6">
-                                   <label for="date">Select Date</label>
-                                   <input type="date" name="date" value="" class="form-control">
-                              </div>
-
-                              <div class="col-md-6 col-sm-6">
-                                   <label for="select">Select Department</label>
-                                   <select class="form-control">
-                                        <option>General Health</option>
-                                        <option>Cardiology</option>
-                                        <option>Dental</option>
-                                        <option>Medical Research</option>
+                                   
+                                   <label for="date">Date of Appointment</label>
+                                   <select id="date" name="date" class="form-control" onclick="select()" onchange="" >
+                                        <option selected>Select</option>
+                                        <option id = "0"></option>
+                                        <option id = "1"></option>
+                                        <option id = "2"></option>
+                                        <option id = "3"></option>
+                                        <option id = "4"></option>
+                                        <option id = "5"></option>
+                                        <option id = "6"></option>
                                    </select>
                               </div>
 
+                              <div class="col-md-6 col-sm-6">
+                                   <label for="select">Test</label>
+                                   <select id="test" class="form-control" name="test" >
+                                        <option selected>Select</option>
+                                        <option id="test1">test1</option>
+                                        <option id="test2">test2</option>
+                                        <option id="test3">test3</option>
+                                        <option id="test4">test4</option>
+                                   </select>
+                              </div>
+                              <div id="demo"></div>
                               <div class="col-md-12 col-sm-12">
                                    <label for="telephone">Phone Number</label>
                                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="Phone">
+                                   <label for="email">Phone Number</label>
+                                   <input type="email" class="form-control" id="email" name="email" placeholder="Email">
                                    <label for="Message">Additional Message</label>
                                    <textarea class="form-control" rows="5" id="message" name="message" placeholder="Message"></textarea>
-                                   <button type="submit" class="form-control" id="cf-submit" name="submit">Submit Button</button>
+                                   <div id="dem">
+                                   <button type="submit" class="form-control" id="cf-submit" name="submit" value="submit">Confirm</button>
+                                   </div>
                               </div>
                          </div>
                    </form>
@@ -121,6 +192,7 @@
 
           </div>
      </div>
+</div>
 </section>
 <br>
 <br>
@@ -192,7 +264,97 @@
              </div>
         </div>
    </footer>
+  
 
+
+   <script>
+function select()
+{
+var ourDate = new Date();
+                    //Change it so that it is 7 days in the past.
+                    var i=0;
+                    var dates = [];
+                    while(i<7)
+                    {
+                    var pastDate = ourDate.getDate() + 1;
+                    ourDate.setDate(pastDate);
+                    var str = ourDate.toString();
+                    var s = str.substring(0,15);
+                    //console.log(s);
+                    dates.push(s);   
+                    document.getElementById(i).innerHTML = dates[i];          
+                    i++;
+                    }
+                    console.log(dates);
+                    
+}
+     
+function slot()
+{
+    var date = document.getElementById("date").value;
+    console.log(date);
+    
+    if(date!="Select")
+    {
+        <?php
+    $query=$con->prepare("SELECT * FROM `labbook`");
+    $query->execute();
+    $run= $query->get_result();
+    $row=$run->num_rows;
+    ?>
+    var id = "<?php echo $row; ?>"
+    var a=0;
+    show(a);
+    <?php
+    while($res=$run->fetch_assoc())
+    {
+     ?>
+     var dat = "<?php echo $res['date']; ?>";
+     var com = date.localeCompare(dat);
+     if(com==0)
+     {
+          a=1;
+          show(a);
+     }
+     id++;
+     <?php
+          //echo 'show(1);';
+    }
+    ?>
+    }
+    else{
+         a=2;
+         show(a);
+    }
+}
+function show(a)
+{
+     if(a==1)
+     {
+     //console.log(a);
+     let tab=`<p style="color: red;">Unavailable</p>`;
+     document.getElementById("demo").innerHTML = tab; 
+     let ta = ``;
+     document.getElementById("dem").innerHTML = ta; 
+     }
+     else if(a==2)
+     {
+          let tab=``;
+          document.getElementById("demo").innerHTML = tab; 
+          let ta=`<button type="submit" class="form-control" id="cf-submit" name="submit" value="submit">Confirm</button>`;
+          document.getElementById("dem").innerHTML = ta;
+     }
+     else
+     {
+          let tab=`<p style="color: green;">Available</p>`;
+          document.getElementById("demo").innerHTML = tab;
+          let ta = `<button type="submit" class="form-control" id="cf-submit" name="submit" value="submit">Confirm</button>`;
+          document.getElementById("dem").innerHTML = ta;
+     }
+}
+
+     </script>
+    
    <!-- SCRIPTS -->
    <script src="js/jquery.js"></script>
    <script src="js/bootstrap.min.js"></script>

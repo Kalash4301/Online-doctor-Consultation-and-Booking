@@ -817,7 +817,17 @@ http://www.tooplate.com/view/2098-health
     background: #393939;
     color: #ffffff;
   }
-
+  #user_image {
+    float: left;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    background-image: url(profile.jpg);
+    background-size: 100% 100%;
+    margin-left: 50px;
+    margin-top: 50px;
+    opacity: 75%;
+}
 
   /*---------------------------------------
      FOOTER              
