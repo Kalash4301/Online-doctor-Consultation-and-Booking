@@ -1,3 +1,35 @@
+<?php
+session_start();
+$con=mysqli_connect('localhost','root','','healthcare');
+if(isset($_POST['login']))
+{
+    $email=$_POST['email'];
+    $password=$_POST['password'];
+    $query=$con->prepare("SELECT * FROM `users` WHERE `email`=? AND `password`=?");
+    $query->bind_param("ss",$email,$password);
+$query->execute();
+  $run= $query->get_result();
+  $row=$run->num_rows;
+  if($row>0)
+  {
+      $res=$run->fetch_assoc();
+      $role=$res['role'];
+      if($role=='User')
+      {
+          $_SESSION['user_id']=$res['id'];
+        header('location:profile.php');
+      }
+      else if($role=='Doctor')
+      {
+        //header('location:profile.php');
+      }
+  }
+  else
+  {
+    echo '<script>alert("Incorrect Email and Password")</script>';
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,8 +75,8 @@ http://www.tooplate.com/view/2098-health
                     <div class="input-group">
                     
                    
-                   <label for="user_name">Username</label>
-                  <input type="text" name="user_name" class="form-control" placeholder="Username" aria-describedby="inputGroupPrepend" required>
+                   <label for="email">Email</label>
+                  <input type="email" name="email" class="form-control" placeholder="Email" aria-describedby="inputGroupPrepend" required>
                  
                 </div>
               
@@ -56,7 +88,7 @@ http://www.tooplate.com/view/2098-health
                 <input type="password" name="password" class="form-control" placeholder="Password" id="pwd" required>
                 
             </div>
-            <p>Don't have an accout? <a href="Register.html">SignIn</a></p>
+            <p>Don't have an accout? <a href="Register.php">SignIn</a></p>
             <br>
             <div class="modal-footer  justify-content-center">
             <input type="submit" name="login" class="btn btn-success" value="Login">

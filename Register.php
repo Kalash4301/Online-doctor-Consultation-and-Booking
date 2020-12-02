@@ -1,3 +1,31 @@
+
+<?php
+session_start();
+$con=mysqli_connect('localhost','root','','healthcare');
+if(isset($_POST['submit']))
+{
+    $name=$_POST['name'];
+    $email=$_POST['email'];
+    $password=$_POST['password'];
+    $date=$_POST['date'];
+    $group=$_POST['group'];
+    $phn_no=$_POST['phone'];
+    $gender=$_POST['gender'];
+    $address=$_POST['address'];
+    $past_medi=$_POST['past_medi'];
+    $query1=$con->prepare("INSERT INTO `users`(`Name`, `email`, `password`, `gender`, `dob`, `bloodgrp`, `address`, `past_medication`) VALUES (?,?,?,?,?,?,?,?)");
+    $query1->bind_param("ssssssss",$name,$email,$password,$gender,$date,$group,$address,$past_medi);
+    if($query1->execute())
+    {
+        echo '<script>alert("Registration Sucessfully")</script>';
+    }
+    else
+    {
+        echo '<script>alert("Error while Registration")</script>';
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,12 +80,16 @@
 
               <!-- MENU LINKS -->
               <div class="collapse navbar-collapse">
-                   <ul class="nav navbar-nav navbar-right">
-                    <li><a href="index.html" class="smoothScroll">Home</a></li>
-                    
-                    <li><a href="#about" class="smoothScroll">About Us</a></li>
-                   </ul>
-              </div>
+                    <ul class="nav navbar-nav navbar-right">
+                         <li><a href="index.php" class="smoothScroll">Home</a></li>
+                         <li><a href="findclinic.php" class="smoothScroll">Make an appointment</a></li>
+                         <li><a href="findlab.php" class="smoothScroll">Book Lab Testing</a></li>
+                         <li><a href="#" class="smoothScroll">Consultation</a></li>
+                         <li><a href="#" class="smoothScroll"><?php echo $_SESSION['user_id']; ?></a></li>
+                         <li><a href="#about" class="smoothScroll">About Us</a></li>
+                         
+                    </ul>
+               </div>
 
          </div>
     </section>
@@ -81,7 +113,7 @@
                          </div>
 
                          <div class="wow fadeInUp" data-wow-delay="0.8s">
-                              <div class="col-md-6 col-sm-6">
+                              <div class="col-md-12 col-sm-12">
                                    <label for="name">Name</label>
                                    <input type="text" class="form-control" id="name" name="name" placeholder="Full Name">
                               </div>
@@ -92,25 +124,44 @@
                               </div>
 
                               <div class="col-md-6 col-sm-6">
+                                   <label for="password">Password</label>
+                                   <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                              </div>
+
+                              <div class="col-md-6 col-sm-6">
                                    <label for="date">Date of birth</label>
                                    <input type="date" name="date" value="" class="form-control">
                               </div>
 
                               <div class="col-md-6 col-sm-6">
-                                   <label for="select">Select Department</label>
-                                   <select class="form-control">
-                                        <option>General Health</option>
-                                        <option>Cardiology</option>
-                                        <option>Dental</option>
-                                        <option>Medical Research</option>
+                              <label for="group">Blood Group</label>
+                                   <input type="text" class="form-control" id="group" name="group" placeholder="Blood Group">
+                              </div>
+
+                              <div class="col-md-6 col-sm-6">
+                              <label for="select">Gender</label>
+                                   <select id="gender" class="form-control" name="gender">
+                                        <option selected>Select</option>
+                                        <option id="Male">Male</option>
+                                        <option id="Female">Female</option>
+                                        <option id="Others">Others</option>
+                                        
                                    </select>
+                                </div>
+
+
+                                <div class="col-md-6 col-sm-6">
+                              <label for="telephone">Phone Number</label>
+                                   <input type="tel" class="form-control" id="phone" name="phone" placeholder="Phone">
                               </div>
 
                               <div class="col-md-12 col-sm-12">
-                                   <label for="telephone">Phone Number</label>
-                                   <input type="tel" class="form-control" id="phone" name="phone" placeholder="Phone">
+                                  
                                    <label for="Address">Address</label>
-                                   <textarea class="form-control" rows="5" id="address" name="address" placeholder="Address"></textarea>
+                                   <input class="form-control" rows="5" id="address" name="address" placeholder="Address">
+
+                                   <label for="Past Medications">Past Medications</label>
+                                   <textarea class="form-control" rows="5" id="past_medi" name="past_medi" placeholder="Your Past Medications"></textarea>
                                    <button type="submit" class="form-control" id="cf-submit" name="submit">Sign In</button>
                               </div>
                          </div>

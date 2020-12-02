@@ -61,14 +61,16 @@ $query->execute();
 
               <!-- MENU LINKS -->
               <div class="collapse navbar-collapse">
-                   <ul class="nav navbar-nav navbar-right">
-                    <li><a href="index.html" class="smoothScroll">Home</a></li>
-                    <li><a href="#" class="smoothScroll">Book Lab Testing</a></li>
-                    <li><a href="#" class="smoothScroll">Consultation</a></li>
-                    <li><a href="#" class="smoothScroll">My Profile</a></li>
-                    <li><a href="#about" class="smoothScroll">About Us</a></li>
-                   </ul>
-              </div>
+                    <ul class="nav navbar-nav navbar-right">
+                         <li><a href="index.php" class="smoothScroll">Home</a></li>
+                         <li><a href="findclinic.php" class="smoothScroll">Make an appointment</a></li>
+                         <li><a href="findlab.php" class="smoothScroll">Book Lab Testing</a></li>
+                         <li><a href="#" class="smoothScroll">Consultation</a></li>
+                         <li><a href="#" class="smoothScroll" data-target="#mymodel" data-toggle="modal">Login/Sign Up</a></li>
+                         <li><a href="#about" class="smoothScroll">About Us</a></li>
+                         
+                    </ul>
+               </div>
 
          </div>
     </section>
