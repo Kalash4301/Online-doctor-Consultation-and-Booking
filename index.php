@@ -152,7 +152,7 @@ http://www.tooplate.com/view/2098-health
                          <li><a href="#top" class="smoothScroll">Home</a></li>
                          <li><a href="findclinic.php" class="smoothScroll">Make an appointment</a></li>
                          <li><a href="findlab.php" class="smoothScroll">Book Lab Testing</a></li>
-                         <li><a href="#" class="smoothScroll">Consultation</a></li>
+                         <li><a href="consultation.php" class="smoothScroll">Consultation</a></li>
                          <li><a href="#" class="smoothScroll" data-target="#mymodel" data-toggle="modal">Login/Sign Up</a></li>
                          <li><a href="#about" class="smoothScroll">About Us</a></li>
                          

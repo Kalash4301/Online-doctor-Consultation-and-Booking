@@ -1,6 +1,7 @@
 <?php
 session_start();
 $con=mysqli_connect('localhost','root','','healthcare');
+//echo $_SESSION['user_id'];
 if(isset($_GET['id']))
 {
     $id = $_GET['id'];
@@ -11,14 +12,15 @@ $query->execute();
 }
 if(isset($_POST['submit']))
 {
+     $user_id = $_SESSION['user_id'];
     $name=$_POST['name'];
     $age=$_POST['age'];
     $date=$_POST['date'];
     $time=$_POST['time'];
     $phn_no=$_POST['phone'];
     $message=$_POST['message'];
-    $query1=$con->prepare("INSERT INTO `appointment`(`name`,`doc_id`, `age`, `date`, `time`, `phn_no`, `message`) VALUES (?,?,?,?,?,?,?)");
-    $query1->bind_param("sssssss", $name,$id,$age,$date,$time,$phn_no,$message);
+    $query1=$con->prepare("INSERT INTO `appointment`(`user_id`, `name`,`doc_id`, `age`, `date`, `time`, `phn_no`, `message`) VALUES (?,?,?,?,?,?,?,?)");
+    $query1->bind_param("ssssssss", $user_id,$name,$id,$age,$date,$time,$phn_no,$message);
     if($query1->execute())
     {
         echo '<script>alert("Appointment Booked Sucessfully")</script>';

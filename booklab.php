@@ -11,6 +11,7 @@ $query->execute();
 }
 if(isset($_POST['submit']))
 {
+     $user_id=$_SESSION['user_id'];
     $name=$_POST['name'];
     $age=$_POST['age'];
     $date=$_POST['date'];
@@ -18,11 +19,11 @@ if(isset($_POST['submit']))
     $test=$_POST['test'];
     $phn_no=$_POST['phone'];
     $message=$_POST['message'];
-    $query1=$con->prepare("INSERT INTO `labbook`(`lab_id`, `name`, `age`, `date`, `test`, `ph_no`, `email`, `message`) VALUES (?,?,?,?,?,?,?,?)");
-    $query1->bind_param("ssssssss",$id, $name,$age,$date,$test,$phn_no,$email,$message);
+    $query1=$con->prepare("INSERT INTO `labbook`(`user_id`,`lab_id`, `name`, `age`, `date`, `test`, `ph_no`, `email`, `message`) VALUES (?,?,?,?,?,?,?,?,?)");
+    $query1->bind_param("sssssssss",$user_id,$id, $name,$age,$date,$test,$phn_no,$email,$message);
     if($query1->execute())
     {
-        echo '<script>alert("Appointment Booked Sucessfully")</script>';
+        echo '<script>alert("Labtest Booked Sucessfully")</script>';
     }
     else
     {
@@ -83,7 +84,7 @@ if(isset($_POST['submit']))
               </div>
 
               <!-- MENU LINKS -->
-              <<div class="collapse navbar-collapse">
+              <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                          <li><a href="index.php" class="smoothScroll">Home</a></li>
                          <li><a href="findclinic.php" class="smoothScroll">Make an appointment</a></li>
@@ -180,7 +181,7 @@ if(isset($_POST['submit']))
                               <div class="col-md-12 col-sm-12">
                                    <label for="telephone">Phone Number</label>
                                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="Phone">
-                                   <label for="email">Phone Number</label>
+                                   <label for="email">Email</label>
                                    <input type="email" class="form-control" id="email" name="email" placeholder="Email">
                                    <label for="Message">Additional Message</label>
                                    <textarea class="form-control" rows="5" id="message" name="message" placeholder="Message"></textarea>
