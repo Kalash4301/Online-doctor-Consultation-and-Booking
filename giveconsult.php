@@ -1,3 +1,16 @@
+<?php
+session_start();
+$con=mysqli_connect('localhost','root','','healthcare');
+if(isset($_GET['user']))
+{
+     $user=$_GET['user'];
+     $query=$con->prepare("SELECT * FROM `consultation` WHERE `id`='$user'");
+     $query->execute();
+     $run= $query->get_result();
+     $res=$run->fetch_assoc();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,7 +79,25 @@
     <section data-stellar-background-ratio="3">
 <div class="container">
   <div class="row">
+  <br>
+  <br>
+  <table class="table table-borderless">
   
+  <tbody>
+    <tr>
+      <th scope="row"></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+   
+  </tbody>
+</table>
+  <div class="col-md-2 col-sm-2"></div>
+  <div class="col-md-8 col-sm-8">
+
+  </div>
+  <div class="col-md-2 col-sm-2"></div>
   </div>
  
   </div>

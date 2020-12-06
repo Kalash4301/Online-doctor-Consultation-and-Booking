@@ -85,7 +85,7 @@ if(isset($_POST['submit']))
                          <li><a href="findclinic.php" class="smoothScroll">Make an appointment</a></li>
                          <li><a href="findlab.php" class="smoothScroll">Book Lab Testing</a></li>
                          <li><a href="#" class="smoothScroll">Consultation</a></li>
-                         <li><a href="#" class="smoothScroll"><?php echo $_SESSION['user_id']; ?></a></li>
+                         <li><a href="#" class="smoothScroll"></a></li>
                          <li><a href="#about" class="smoothScroll">About Us</a></li>
                          
                     </ul>

@@ -158,7 +158,7 @@ $query1->execute();
       <td><?php echo $res1['guest_currentcon']; ?></td>
       <td><?php echo $res1['guest_allergy']; ?></td>
       <td><?php echo $res1['title']; ?></td>
-      <td><form method="#" action="#"><button type="submit" id="appoint" class="form-control">Give Consultation</button></form></td>
+      <td><a href="giveconsult.php?user=<?php echo $res1['id']; ?>" type="submit" style="background-color: #6b5b95;" class="form-control" >Give Consultation</a></td>
     </tr>
     <?php
   }
