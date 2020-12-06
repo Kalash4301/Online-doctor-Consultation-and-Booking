@@ -21,13 +21,28 @@ $query->execute();
       }
       else if($role=='Doctor')
       {
-        //header('location:profile.php');
+          $_SESSION['doct_id']=$res['id'];
+          header('location:doctprofile.php');
       }
   }
   else
   {
     echo '<script>alert("Incorrect Email and Password")</script>';
   }
+}
+if(isset($_SESSION['sys']))
+{
+     echo '<script>alert("You are not logged In")</script>';
+     unset($_SESSION['sys']);
+}
+else
+{
+     
+}
+if(isset($_GET['logout']))
+{
+     session_destroy();
+     header("refresh:0.1; url=index.php");
 }
 ?>
 <!DOCTYPE html>
@@ -153,7 +168,28 @@ http://www.tooplate.com/view/2098-health
                          <li><a href="findclinic.php" class="smoothScroll">Make an appointment</a></li>
                          <li><a href="findlab.php" class="smoothScroll">Book Lab Testing</a></li>
                          <li><a href="consultation.php" class="smoothScroll">Consultation</a></li>
-                         <li><a href="#" class="smoothScroll" data-target="#mymodel" data-toggle="modal">Login/Sign Up</a></li>
+                         <?php
+                         if(isset($_SESSION['user_id']))
+                         {
+                              $user_id=$_SESSION['user_id'];
+                              $query=$con->prepare("SELECT * FROM `users` WHERE `id`='$user_id'");
+                              $query->execute();
+                              $run= $query->get_result();
+                              $row=$run->fetch_assoc();
+                              $mail= $row['email'];
+                              ?>
+                              <li><a href="profile.php" class="smoothScroll"><?php echo $mail; ?></a></li>
+                              <li><a href="index.php?logout=T" class="smoothScroll">Log Out</a></li> 
+                              <?php
+                         }
+                         else
+                         {
+                              ?>
+                              <li><a href="#" class="smoothScroll" data-target="#mymodel" data-toggle="modal">LogIn/SignIn</a></li>
+                              <?php
+                         }
+                         ?>
+                         
                          <li><a href="#about" class="smoothScroll">About Us</a></li>
                          
                     </ul>
@@ -353,7 +389,7 @@ http://www.tooplate.com/view/2098-health
                                    <h3><a href="#">Book lab testing</a></h3>
                                    <p>Fusce vel sem finibus, rhoncus massa non, aliquam velit. Nam et est ligula.</p>
                                    <div class="author">
-                                        <form method="#" action="#">
+                                        <form method="#" action="findlab.php">
                                              <button type="submit" id="test" class="form-control">Book Now</button>
                                         </form>
                                    </div>
@@ -372,8 +408,8 @@ http://www.tooplate.com/view/2098-health
                                    <h3><a href="#">Ask for consultation to the doctor</a></h3>
                                    <p>Vivamus non nulla semper diam cursus maximus. Pellentesque dignissim.</p>
                                    <div class="author">
-                                        <form method="#" action="#">
-                                             <button type="submit" id="consult" class="form-control">Ask Now</button>
+                                        <form method="#" action="consultation.php">
+                                             <button type="submit" id="consult" name="consult" class="form-control">Ask Now</button>
                                        </form>
                                    </div>
                               </div>

@@ -1,8 +1,16 @@
 <?php
 session_start();
-$user_id=$_SESSION['user_id'];
-$con=mysqli_connect('localhost','root','','healthcare');
+if(!isset($_SESSION['user_id']))
+{
+     header('location:index.php');
+     $_SESSION['sys']=0;
+}
+else
+{
+     $user_id=$_SESSION['user_id'];
+}
 
+$con=mysqli_connect('localhost','root','','healthcare');
  
       if(isset($_POST['submit']))
       {     
@@ -40,7 +48,7 @@ $con=mysqli_connect('localhost','root','','healthcare');
                 
               }
               else
-                echo "bye";
+                echo '<script>alert("Error while submitting")</script>';
               
               
 
@@ -244,6 +252,7 @@ $con=mysqli_connect('localhost','root','','healthcare');
                               <div class="col-md-4 col-sm-4">
                                    <label for="select">Gender</label>
                                    <select name="gender" class="form-control">
+                                   <option selected>Select</option>
                                         <option value="M">Male</option>
                                         <option value="F">Female</option>
                                         <option value="O">Other</option>
@@ -255,10 +264,11 @@ $con=mysqli_connect('localhost','root','','healthcare');
                               <div class="col-md-4 col-sm-4">
                                    <label for="select">Treatment Type</label>
                                    <select name="treatment" class="form-control">
-                                        <option value="General Health">General Health</option>
-                                        <option value="Cardiology" >Cardiology</option>
-                                        <option value="Dental" >Dental</option>
-                                        <option value="Medical Research" >Medical Research</option>
+                                   <option selected>Select</option>
+                                   <option value="Phychiatrist" >Phychiatrist</option>
+                                    <option value="Cardiovascular Surgeon" >Cardiovascular Surgeon</option>
+                                   <option value="Physician" >Physician</option>
+                                   <option value="Cosmetologist" >Cosmetologist</option>
                                    </select>
                                    
                               </div>

@@ -3,7 +3,6 @@
  $con=mysqli_connect('localhost','root','','healthcare');
  $user_id=$_SESSION['user_id'];
  
- 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -119,8 +118,7 @@
                          <li><a href="findclinic.php" class="smoothScroll">Make an appointment</a></li>
                          <li><a href="findlab.php" class="smoothScroll">Book Lab Testing</a></li>
                          <li><a href="consultation.php" class="smoothScroll">Consultation</a></li>
-                         <li><a href="#" class="smoothScroll" data-target="#mymodel" data-toggle="modal">Login/Sign Up</a></li>
-                         <li><a href="#about" class="smoothScroll">About Us</a></li>
+                         <li><a href="index.php?logout=T" class="smoothScroll">Log Out</a></li> 
                          
                     </ul>
                </div>
@@ -395,16 +393,29 @@
 
   </div>
 <?php
-  $query=$con->prepare("SELECT * FROM `appointment` WHERE `user_id`='$user_id'");
-$query->execute();
-  $run= $query->get_result();
-  $row=$run->num_rows;
+  $query=$con->prepare("SELECT * FROM `users` WHERE `id`='$user_id'");
+  $query->execute();
+   $run= $query->get_result();
+   $row=$run->fetch_assoc();
   
   ?>
   <div class="col-md-1 col-sm-1"></div>
 
 
   <div class="col-md-6 col-sm-6">  
+  <h4>Name : <?php echo $row['Name']; ?></h4>
+  <div class="row">
+  <div class="col-md-6 col-sm-6">  
+  <h5><b>DOB : </b><?php echo $row['dob']; ?></h5>
+  <h5><b>Blood Group : </b><?php echo $row['bloodgrp']; ?></h5>
+  </div>
+  <div class="col-md-6 col-sm-6">
+  <h5><b>Gender : </b><?php echo $row['gender']; ?></h5>
+  <h5><b>Email : </b><?php echo $row['email']; ?></h5>
+  </div>
+  </div>
+  <h5><b>Address : </b><?php echo $row['address']; ?></h5>
+  <h5><b>Past Medications : </b><?php echo $row['past_medication']; ?></h5>
   <h3 style="color: #a5c422;">Past Appointments</h3>
   <br>
   <div class="table-responsive" style="background-color: #f0f0f0;">
@@ -419,6 +430,10 @@ $query->execute();
   </thead>
   <tbody>
   <?php
+  $query=$con->prepare("SELECT * FROM `appointment` WHERE `user_id`='$user_id'");
+  $query->execute();
+    $run= $query->get_result();
+    $row=$run->num_rows;
   while($res=$run->fetch_assoc())
   {
     $doc_id=$res['doc_id'];
