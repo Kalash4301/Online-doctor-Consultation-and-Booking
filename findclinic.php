@@ -1,5 +1,10 @@
 <?php
  session_start();
+ if(!isset($_SESSION['user_id']))
+{
+     header('location:index.php');
+     $_SESSION['sys']=0;
+}
  $con=mysqli_connect('localhost','root','','healthcare');
  $query=$con->prepare("SELECT * FROM `doctors`");
 $query->execute();
@@ -62,12 +67,12 @@ $query->execute();
               <!-- MENU LINKS -->
               <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                         <li><a href="index.php" class="smoothScroll">Home</a></li>
+                    <li><a href="index.php" class="smoothScroll">Home</a></li>
                          <li><a href="findclinic.php" class="smoothScroll">Make an appointment</a></li>
                          <li><a href="findlab.php" class="smoothScroll">Book Lab Testing</a></li>
-                         <li><a href="#" class="smoothScroll">Consultation</a></li>
-                         <li><a href="#" class="smoothScroll" data-target="#mymodel" data-toggle="modal">Login/Sign Up</a></li>
-                         <li><a href="#about" class="smoothScroll">About Us</a></li>
+                         <li><a href="consultation.php" class="smoothScroll">Consultation</a></li>
+                         <li><a href="profile.php" class="smoothScroll">My Profile</a></li>
+                         <li><a href="index.php?logout=T" class="smoothScroll">Log Out</a></li> 
                          
                     </ul>
                </div>
@@ -118,7 +123,7 @@ $query->execute();
 
 
 
-<footer data-stellar-background-ratio="5">
+<footer data-stellar-background-ratio="5" >
         <div class="container">
              <div class="row">
                

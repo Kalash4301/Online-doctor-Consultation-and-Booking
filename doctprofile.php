@@ -6,12 +6,20 @@ $query=$con->prepare("SELECT * FROM `doctors` WHERE `userdoc_id`='$doct_id'");
 $query->execute();
  $run= $query->get_result();
  $res=$run->fetch_assoc();
+ $_SESSION['condoc'] = $res['id'];
  $do_id=$res['id'];
  $special=$res['specialization'];
+ 
+ 
  $query1=$con->prepare("SELECT * FROM `appointment` WHERE `doc_id`='$do_id'");
 $query1->execute();
  $run1= $query1->get_result();
  $row1=$run1->num_rows;
+
+ $query2=$con->prepare("SELECT * FROM `users` WHERE `id`='$doct_id'");
+ $query2->execute();
+  $run2= $query2->get_result();
+  $res2=$run2->fetch_assoc();
 ?>
 
 <!DOCTYPE html>
@@ -69,9 +77,8 @@ $query1->execute();
               <!-- MENU LINKS -->
               <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                         <li><a href="#" class="smoothScroll">Consultation</a></li>
+                         
                          <li><a href="index.php?logout=T" class="smoothScroll">Log Out</a></li> 
-                         <li><a href="#about" class="smoothScroll">About Us</a></li>
                          
                     </ul>
                </div>
@@ -89,6 +96,21 @@ $query1->execute();
   </div>
   </div>
   <div class="col-md-8 col-sm-8">
+
+  <h4>Name : <?php echo $res['name']; ?></h4>
+  <div class="row">
+  <div class="col-md-6 col-sm-6">  
+  <h5><b>Specialization : </b><?php echo $res['specialization']; ?></h5>
+  <h5><b>City : </b><?php echo $res['city']; ?></h5>
+  </div>
+  <div class="col-md-6 col-sm-6">
+  <h5><b>Degree : </b><?php echo $res['degree']; ?></h5>
+  <h5><b>Email : </b><?php echo $res2['email']; ?></h5>
+  </div>
+  </div>
+  
+
+  
   <h3 style="color: #a5c422;">Appointments</h3>
   <br>
   <div class="table-responsive" style="background-color: #f0f0f0;">

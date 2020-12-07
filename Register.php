@@ -17,6 +17,13 @@ if(isset($_POST['submit']))
     $query1->bind_param("ssssssss",$name,$email,$password,$gender,$date,$group,$address,$past_medi);
     if($query1->execute())
     {
+     $query=$con->prepare("SELECT * FROM `users` WHERE `email`=? AND `password`=?");
+     $query->bind_param("ss",$email,$password);
+     $query->execute();
+     $run= $query->get_result();
+     $res=$run->fetch_assoc();
+     $_SESSION['user_id']=$res['id'];
+     header('location:profile.php');
         echo '<script>alert("Registration Sucessfully")</script>';
     }
     else
@@ -82,10 +89,7 @@ if(isset($_POST['submit']))
               <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                          <li><a href="index.php" class="smoothScroll">Home</a></li>
-                         <li><a href="findclinic.php" class="smoothScroll">Make an appointment</a></li>
-                         <li><a href="findlab.php" class="smoothScroll">Book Lab Testing</a></li>
-                         <li><a href="#" class="smoothScroll">Consultation</a></li>
-                         <li><a href="#" class="smoothScroll"></a></li>
+                         
                          <li><a href="#about" class="smoothScroll">About Us</a></li>
                          
                     </ul>

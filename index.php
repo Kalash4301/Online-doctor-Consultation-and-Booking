@@ -420,7 +420,7 @@ http://www.tooplate.com/view/2098-health
 
 
      <!-- FOOTER -->
-     <footer data-stellar-background-ratio="5" style="background-color: rgb(64, 128, 0);">
+     <!--<footer data-stellar-background-ratio="5" style="background-color: rgb(64, 128, 0);">
           <div class="container"  >
                <div class="row">
 
@@ -444,55 +444,51 @@ http://www.tooplate.com/view/2098-health
                     
                </div>
           </div>
-     </footer>
+     </footer>-->
                      
-                    <!--
-                    <div class="col-md-4 col-sm-4">
-                         <div class="footer-thumb"> 
-                              <h4 class="wow fadeInUp" data-wow-delay="0.4s">Contact Info</h4>
-                              <p>Fusce at libero iaculis, venenatis augue quis, pharetra lorem. Curabitur ut dolor eu elit consequat ultricies.</p>
-
-                              <div class="contact-info">
-                                   <p><i class="fa fa-phone"></i> 010-070-0170</p>
-                                   <p><i class="fa fa-envelope-o"></i> <a href="#">healthcenter@company.com</a></p>
-                              </div>
-                         </div>
+                   
+     <footer data-stellar-background-ratio="5" style="background-color: #c5d5c5;">
+        <div class="container">
+             <div class="row" >
+             <div class="col-md-12 col-sm-12 border-top">
+                    <div class="col-md-4 col-sm-6">
+                        
                     </div>
-
-                    
-                    <div class="col-md-1 col-sm-1"> </div>
-                    <div class="col-md-4 col-sm-4"> 
-                         <div class="footer-thumb">
-                              <div class="opening-hours">
-                                   <h4 class="wow fadeInUp" data-wow-delay="0.4s">Opening Hours</h4>
-                                   <p>Monday - Friday <span>06:00 AM - 10:00 PM</span></p>
-                                   <p>Saturday <span>09:00 AM - 08:00 PM</span></p>
-                                   <p>Sunday <span>Closed</span></p>
-                              </div> 
-
-                              <ul class="social-icon">
-                                   <li><a href="#" class="fa fa-facebook-square" attr="facebook icon"></a></li>
-                                   <li><a href="#" class="fa fa-twitter"></a></li>
-                                   <li><a href="#" class="fa fa-instagram"></a></li>
-                              </ul>
-                         </div>
+                    <div class="col-md-6 col-sm-6">
+                         
                     </div>
-                    <div class="col-md-1 col-sm-1"> </div>
+                    <div class="col-md-2 col-sm-2 text-align-center">
+                         <div class="angle-up-btn"> 
+                             <a href="#top" class="smoothScroll wow fadeInUp" data-wow-delay="1.2s"><i class="fa fa-angle-up"></i></a>
+                         </div>
+                    </div>   
+               </div>
+               <div class="col-md-3 col-sm-3"> </div>
+               <div class="col-md-4 col-sm-4">
+               <div class="footer-thumb"> 
+                         <h4 class="wow fadeInUp" data-wow-delay="0.4s" style="color:black;">Contact Info</h4>
+                         <p style="color:black;">Fusce at libero iaculis, venenatis augue quis, pharetra lorem. Curabitur ut dolor eu elit consequat ultricies.</p>
+
+                         <div class="contact-info">
+                              <p style="color:black;"><i class="fa fa-phone"></i> 010-070-0170</p>
+                              <p style="color:black;"><i class="fa fa-envelope-o"></i> <a href="#" style="color:black;">info@company.com</a></p>
+                         </div>
+                    </div>    
+               </div>
+               <div class="col-md-4 col-sm-4"> 
+                    <div class="footer-thumb">
+                         
+                    </div>
+               </div>
+               <div class="col-md-1 col-sm-1"> </div>
 
 
-                    <div class="col-md-12 col-sm-12 border-top">
-                         <div class="col-md-4 col-sm-6">
-                             
-                         </div>
-                         <div class="col-md-6 col-sm-6">
-                              
-                         </div>
-                         <div class="col-md-2 col-sm-2 text-align-center">
-                              <div class="angle-up-btn"> 
-                                  <a href="#top" class="smoothScroll wow fadeInUp" data-wow-delay="1.2s"><i class="fa fa-angle-up"></i></a>
-                              </div>
-                         </div>  
-                         --> 
+               
+                  
+             </div>
+        </div>
+   </footer>
+                         
                     
 
      <!-- SCRIPTS -->

@@ -1,6 +1,7 @@
 <?php
 session_start();
 $con=mysqli_connect('localhost','root','','healthcare');
+$doct_id=$_SESSION['condoc'];
 if(isset($_GET['user']))
 {
      $user=$_GET['user'];
@@ -13,8 +14,8 @@ if(isset($_POST['submit']))
 {
      $consult=$_POST['consult'];
      $flag=1;
-     $query=$con->prepare("UPDATE `consultation` SET `consultation`=?,`flag`=? WHERE `id`='$user'");
-     $query->bind_param("ss",$consult,$flag);
+     $query=$con->prepare("UPDATE `consultation` SET `doc_id`=?,`consultation`=?,`flag`=? WHERE `id`='$user'");
+     $query->bind_param("sss",$doct_id,$consult,$flag);
      $query->execute();
      $run= $query->get_result();
      if($query->execute())
@@ -83,9 +84,8 @@ if(isset($_POST['submit']))
               <!-- MENU LINKS -->
               <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                         <li><a href="#" class="smoothScroll">Consultation</a></li>
-                         <li><a href="#" class="smoothScroll" data-target="#mymodel" data-toggle="modal">Login/Sign Up</a></li>
-                         <li><a href="#about" class="smoothScroll">About Us</a></li>
+                    <li><a href="doctprofile.php" class="smoothScroll">My Profile</a></li> 
+                    <li><a href="index.php?logout=T" class="smoothScroll">Log Out</a></li> 
                          
                     </ul>
                </div>
@@ -115,6 +115,11 @@ if(isset($_POST['submit']))
      
     </tr>
     <tr>
+      <th scope="row">Gmail:</th>
+      <td><?php echo $res['guest_gmail']; ?></td>
+      
+    </tr>
+    <tr>
       <th scope="row">Age:</th>
       <td><?php echo $res['guest_age']; ?></td>
      
@@ -135,13 +140,8 @@ if(isset($_POST['submit']))
       
     </tr>
     <tr>
-      <th scope="row">Gmail:</th>
-      <td><?php echo $res['guest_gmail']; ?></td>
-      
-    </tr>
-    <tr>
-      <th scope="row">Allergy:</th>
-      <td><?php echo $res['guest_allergy']; ?></td>
+      <th scope="row">Title:</th>
+      <td><?php echo $res['title']; ?></td>
       
     </tr>
     <tr>
@@ -150,8 +150,13 @@ if(isset($_POST['submit']))
      
     </tr>
     <tr>
-      <th scope="row">Title:</th>
-      <td><?php echo $res['title']; ?></td>
+      <th scope="row">Description:</th>
+      <td><?php echo $res['description']; ?></td>
+      
+    </tr>
+    <tr>
+      <th scope="row">Allergy:</th>
+      <td><?php echo $res['guest_allergy']; ?></td>
       
     </tr>
   </tbody>
