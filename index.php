@@ -127,23 +127,7 @@ http://www.tooplate.com/view/2098-health
 
 
      <!-- HEADER -->
-     <header>
-          <div class="container">
-               <div class="row">
-
-                    <div class="col-md-4 col-sm-5">
-                         <p>Welcome to a Professional Health Care</p>
-                    </div>
-                         
-                    <div class="col-md-8 col-sm-7 text-align-right">
-                         <span class="phone-icon"><i class="fa fa-phone"></i> 010-060-0160</span>
-                         <span class="date-icon"><i class="fa fa-calendar-plus-o"></i> 9:00 AM - 7:00 PM (Mon-Fri)</span>
-                         <span class="email-icon"><i class="fa fa-envelope-o"></i> <a href="#">info@company.com</a></span>
-                    </div>
-
-               </div>
-          </div>
-     </header>
+    
 
 
      <!-- MENU -->
@@ -436,10 +420,33 @@ http://www.tooplate.com/view/2098-health
 
 
      <!-- FOOTER -->
-     <footer data-stellar-background-ratio="5">
-          <div class="container">
+     <footer data-stellar-background-ratio="5" style="background-color: rgb(64, 128, 0);">
+          <div class="container"  >
                <div class="row">
-                    <div class="col-md-2 col-sm-2"></div>
+
+                <div class="col-md-12 col-sm-12 text-align-center">
+                              <div class="angle-up-btn"> 
+                                  <a href="#top" class="smoothScroll wow fadeInUp" data-wow-delay="1.2s"><i class="fa fa-angle-up"></i></a>
+                              </div>
+                   </div>
+                <div class="col-md-4 col-sm-4" ></div>
+                    <div class="col-md-4 col-sm-4"  >
+                        <h2 style="color:white;" class="text-align-center"> Health Care</h2>
+                        <br>
+                        <span style="color:white; font-size: 1.5rem;" ><i class="fa fa-phone"></i> 010-070-0170 </span>
+                        <spam style="color:white; font-size: 1.5 rem;"><i class="fa fa-envelope-o"></i><a style="color:white;" href="#"> healthcenter@company.com </a></span>
+
+                    </div>
+                    <div class="col-md-4 col-sm-4" >
+                      
+                    </div>
+      </div>
+                    
+               </div>
+          </div>
+     </footer>
+                     
+                    <!--
                     <div class="col-md-4 col-sm-4">
                          <div class="footer-thumb"> 
                               <h4 class="wow fadeInUp" data-wow-delay="0.4s">Contact Info</h4>
@@ -447,7 +454,7 @@ http://www.tooplate.com/view/2098-health
 
                               <div class="contact-info">
                                    <p><i class="fa fa-phone"></i> 010-070-0170</p>
-                                   <p><i class="fa fa-envelope-o"></i> <a href="#">info@company.com</a></p>
+                                   <p><i class="fa fa-envelope-o"></i> <a href="#">healthcenter@company.com</a></p>
                               </div>
                          </div>
                     </div>
@@ -484,12 +491,9 @@ http://www.tooplate.com/view/2098-health
                               <div class="angle-up-btn"> 
                                   <a href="#top" class="smoothScroll wow fadeInUp" data-wow-delay="1.2s"><i class="fa fa-angle-up"></i></a>
                               </div>
-                         </div>   
-                    </div>
+                         </div>  
+                         --> 
                     
-               </div>
-          </div>
-     </footer>
 
      <!-- SCRIPTS -->
      <script src="js/jquery.js"></script>

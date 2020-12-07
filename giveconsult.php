@@ -4,10 +4,27 @@ $con=mysqli_connect('localhost','root','','healthcare');
 if(isset($_GET['user']))
 {
      $user=$_GET['user'];
-     $query=$con->prepare("SELECT * FROM `consultation` WHERE `id`='$user'");
+}
+$query=$con->prepare("SELECT * FROM `consultation` WHERE `id`='$user'");
+$query->execute();
+$run= $query->get_result();
+$res=$run->fetch_assoc();
+if(isset($_POST['submit']))
+{
+     $consult=$_POST['consult'];
+     $flag=1;
+     $query=$con->prepare("UPDATE `consultation` SET `consultation`=?,`flag`=? WHERE `id`='$user'");
+     $query->bind_param("ss",$consult,$flag);
      $query->execute();
      $run= $query->get_result();
-     $res=$run->fetch_assoc();
+     if($query->execute())
+    {
+        echo '<script>alert("Submitted Sucessfully")</script>';
+    }
+    else
+    {
+        echo '<script>alert("Error while Submitting")</script>';
+    }
 }
 ?>
 
@@ -81,21 +98,73 @@ if(isset($_GET['user']))
   <div class="row">
   <br>
   <br>
-  <table class="table table-borderless">
+  <br>
+  
+  <div class="col-md-2 col-sm-2"></div>
+  <div class="col-md-8 col-sm-8">
+  <br>
+  <h3 style="color: #a5c422;">Details</h3>
+  <br>
+  <div class="table-responsive">
+  <table class="table table-borderless ">
   
   <tbody>
     <tr>
-      <th scope="row"></th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th scope="row">Name:</th>
+      <td><?php echo $res['guest_name']; ?></td>
+     
     </tr>
-   
+    <tr>
+      <th scope="row">Age:</th>
+      <td><?php echo $res['guest_age']; ?></td>
+     
+    </tr>
+    <tr>
+      <th scope="row">Weight:</th>
+      <td><?php echo $res['weight']; ?></td>
+     
+    </tr>
+    <tr>
+      <th scope="row">Gender:</th>
+      <td><?php echo $res['guest_gender']; ?></td>
+      
+    </tr>
+    <tr>
+      <th scope="row">Current Condition:</th>
+      <td><?php echo $res['guest_currentcon']; ?></td>
+      
+    </tr>
+    <tr>
+      <th scope="row">Gmail:</th>
+      <td><?php echo $res['guest_gmail']; ?></td>
+      
+    </tr>
+    <tr>
+      <th scope="row">Allergy:</th>
+      <td><?php echo $res['guest_allergy']; ?></td>
+      
+    </tr>
+    <tr>
+      <th scope="row">Problem:</th>
+      <td><?php echo $res['problem']; ?></td>
+     
+    </tr>
+    <tr>
+      <th scope="row">Title:</th>
+      <td><?php echo $res['title']; ?></td>
+      
+    </tr>
   </tbody>
 </table>
-  <div class="col-md-2 col-sm-2"></div>
-  <div class="col-md-8 col-sm-8">
-
+</div>
+<h3 style="color: #a5c422;">Consultation</h3>
+<br>
+<form id="appointment-form" role="form" method="post" action="#">
+<textarea class="form-control" rows="6" id="consult" name="consult" placeholder="Consultation"></textarea>
+<br>
+<br>
+<button type="submit" class="form-control" id="cf-submit" name="submit" value="submit" style="background-color: #a5c422;">Confirm</button>
+</form>
   </div>
   <div class="col-md-2 col-sm-2"></div>
   </div>

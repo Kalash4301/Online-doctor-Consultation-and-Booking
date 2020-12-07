@@ -1,4 +1,5 @@
 <?php
+
  session_start();
  $con=mysqli_connect('localhost','root','','healthcare');
  $user_id=$_SESSION['user_id'];
@@ -10,6 +11,8 @@
 <link rel="icon" type="image/png" sizes="16x16" href="images/icon.jpg">
      <title>Health - Medical Website Template</title>
      <meta charset="UTF-8">
+     <meta http-equiv="refresh" content="30">
+
      <meta http-equiv="X-UA-Compatible" content="IE=Edge">
      <meta name="description" content="">
      <meta name="keywords" content="">
@@ -144,10 +147,10 @@
    </div>
    <div id ="addition detail">
    
-    <button type="submit" class="form-control"  id="add" onclick = "Openform()" name="submit" style="background-color: #a5c422;">Add Addition Details</button>
+    
     <br>
 
-    <button type="submit" class="form-control"  id="update" onclick = "Openform()" name="submit" style="background-color: #a5c422;">Update Addition Details</button>
+    <button type="submit" class="form-control"  id="update" onclick = "Openform()" name="submit" style="background-color: #a5c422;">Update/Add Addition Details</button>
 
                      <?php
 
@@ -185,6 +188,7 @@
 
 
                      <?php
+
                      $val="";
                      $val1="";
                      $val2="";
@@ -224,9 +228,20 @@
                         $weight=$_POST['weight'];
                         $maritial=$_POST['maritial'];
 
-                $query2 ="INSERT INTO  `additional`(`user_id`,`city`,`weight`,`allergy`,`injury`,`surgery`,`maritial`) VALUES ('$user_id','$city','$weight','$allergy' ,'$injury','$surgery','$maritial')";
 
-              /*  $query1 =UPDATE `additional` SET `surgery` = 'legs', `injury` = 'skull facture', `allergy` = 'Mushroom', `weight` = '49' WHERE `additional`.`id1` = 2;
+                   
+                      $query="SELECT * FROM `additional` WHERE `user_id`='$user_id'";
+                      $run=mysqli_query($con,$query);
+                        if(mysqli_num_rows($run)>0){
+                          $query2 ="UPDATE `additional` SET `surgery` = '$surgery', `injury` = '$injury', `allergy` = '$allergy', `weight` = '$weight', `city` = '$city',`maritial`='$maritial' WHERE `additional`.`user_id` ='$user_id' ";
+                       
+                        }
+                          else{
+
+                $query2 ="INSERT INTO  `additional`(`user_id`,`city`,`weight`,`allergy`,`injury`,`surgery`,`maritial`) VALUES ('$user_id','$city','$weight','$allergy' ,'$injury','$surgery','$maritial')";
+                              }
+
+              /* $query1 =UPDATE `additional` SET `surgery` = 'legs', `injury` = 'skull facture', `allergy` = 'Mushroom', `weight` = '49' WHERE `additional`.`id1` = 2;
               "UPDATE  INTO  `additional`(`city`,`weight`,`allergy`,`injury`,`surgery`,`maritial`) VALUES ('$city','$weight','$allergy' ,'$injury','$surgery','$maritial')";*/
               
               $run1=mysqli_query($con,$query2);
@@ -236,6 +251,8 @@
                 //header('location:profile.php');
                 //header('refresh:0.5; url=profile.php');
                 echo '<script>alert("Submitted Successfully")</script>';
+               
+
                 
               }
               else
@@ -247,7 +264,7 @@
                     //echo $val1;
                     //echo $val2;
                     
-
+                //header("refresh:05;  url=profile.php");
                      ?>
 
                <form id="form1" method="post" role="form" style="display:none;"action="#">

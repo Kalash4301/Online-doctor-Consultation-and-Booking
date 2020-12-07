@@ -70,7 +70,7 @@ $query1->execute();
               <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                          <li><a href="#" class="smoothScroll">Consultation</a></li>
-                         <li><a href="#" class="smoothScroll" data-target="#mymodel" data-toggle="modal">Login/Sign Up</a></li>
+                         <li><a href="index.php?logout=T" class="smoothScroll">Log Out</a></li> 
                          <li><a href="#about" class="smoothScroll">About Us</a></li>
                          
                     </ul>
@@ -144,7 +144,7 @@ $query1->execute();
   </thead>
   <tbody>
   <?php
-  $query1=$con->prepare("SELECT * FROM `consultation` WHERE `problem`='$special'");
+  $query1=$con->prepare("SELECT * FROM `consultation` WHERE `problem`='$special' AND `flag`=0");
   $query1->execute();
    $run1= $query1->get_result();
    $row1=$run1->num_rows;
@@ -158,7 +158,12 @@ $query1->execute();
       <td><?php echo $res1['guest_currentcon']; ?></td>
       <td><?php echo $res1['guest_allergy']; ?></td>
       <td><?php echo $res1['title']; ?></td>
-      <td><a href="giveconsult.php?user=<?php echo $res1['id']; ?>" type="submit" style="background-color: #6b5b95;" class="form-control" >Give Consultation</a></td>
+      <td>
+      <form action="" method="get">
+    <a href="giveconsult.php?user=<?php echo $res1['id']; ?>" class="btn btn-primary">Give Consultation</a>
+    </form>
+      
+     </td>
     </tr>
     <?php
   }
