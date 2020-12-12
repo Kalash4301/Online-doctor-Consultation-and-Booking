@@ -169,7 +169,7 @@ http://www.tooplate.com/view/2098-health
                          else
                          {
                               ?>
-                              <li><a href="#" class="smoothScroll" data-target="#mymodel" data-toggle="modal">LogIn/SignIn</a></li>
+                              <li><a href="#" class="smoothScroll" style="color:#a5c422; font-size: 1.5rem;" data-target="#mymodel" data-toggle="modal">LogIn/SignIn</a></li>
                               <?php
                          }
                          ?>

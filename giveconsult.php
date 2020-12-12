@@ -14,6 +14,25 @@ if(isset($_POST['submit']))
 {
      $consult=$_POST['consult'];
      $flag=1;
+
+     /* $query2 ="UPDATE `consultation` SET `flag` = '$flag', `consultation` = $consult WHERE `user_id` ='$user' ";
+
+      $run1=mysqli_query($con,$query2);
+
+              if($run1)
+              { 
+                //header('location:profile.php');
+                //header('refresh:0.5; url=profile.php');
+                echo '<script>alert("Submitted Successfully")</script>';
+               
+
+                
+              }
+              else
+              echo '<script>alert("Failed Error has occured")</script>';
+
+                    }*/
+
      $query=$con->prepare("UPDATE `consultation` SET `doc_id`=?,`consultation`=?,`flag`=? WHERE `id`='$user'");
      $query->bind_param("sss",$doct_id,$consult,$flag);
      $query->execute();
@@ -26,7 +45,9 @@ if(isset($_POST['submit']))
     {
         echo '<script>alert("Error while Submitting")</script>';
     }
+
 }
+
 ?>
 
 <!DOCTYPE html>
