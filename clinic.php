@@ -86,12 +86,12 @@ if(isset($_POST['submit']))
               <!-- MENU LINKS -->
               <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                    <li><a href="index.php" style="color:#a5c422; font-size: 1.5rem;" class="smoothScroll">Home</a></li>
-                         <li><a href="findclinic.php" style="color:#a5c422; font-size: 1.5rem;" class="smoothScroll">Make an appointment</a></li>
-                         <li><a href="findlab.php" style="color:#a5c422; font-size: 1.5rem;" class="smoothScroll">Book Lab Testing</a></li>
-                         <li><a href="consultation.php" style="color:#a5c422; font-size: 1.5rem;" class="smoothScroll">Consultation</a></li>
-                         <li><a href="profile.php" style="color:#a5c422; font-size: 1.5rem;" class="smoothScroll">My Profile</a></li>
-                         <li><a href="index.php?logout=T" style="color:#a5c422; font-size: 1.5rem;" class="smoothScroll">Log Out</a></li> 
+                    <li><a href="index.php" style="font-size: 1.3rem;" class="smoothScroll">Home</a></li>
+                         <li><a href="findclinic.php" style="font-size: 1.3rem;" class="smoothScroll">Make an appointment</a></li>
+                         <li><a href="findlab.php" style="font-size: 1.3rem;" class="smoothScroll">Book Lab Testing</a></li>
+                         <li><a href="consultation.php" style="font-size: 1.3rem;" class="smoothScroll">Consultation</a></li>
+                         <li><a href="profile.php" style="font-size: 1.3rem;" class="smoothScroll">My Profile</a></li>
+                         <li><a href="index.php?logout=T" style="font-size: 1.3rem;" class="smoothScroll">Log Out</a></li> 
                          
                     </ul>
                </div>
@@ -213,31 +213,46 @@ if(isset($_POST['submit']))
      </section> 
 
 
-<footer data-stellar-background-ratio="5" style="background-color: rgb(64, 128, 0);">
-          <div class="container"  >
-               <div class="row">
-
-                <div class="col-md-12 col-sm-12 text-align-center">
-                              <div class="angle-up-btn"> 
-                                  <a href="#top" class="smoothScroll wow fadeInUp" data-wow-delay="1.2s"><i class="fa fa-angle-up"></i></a>
-                              </div>
-                   </div>
-                <div class="col-md-4 col-sm-4" ></div>
-                    <div class="col-md-4 col-sm-4"  >
-                        <h2 style="color:white;" class="text-align-center"> Health Care</h2>
-                        <br>
-                        <span style="color:white; font-size: 1.5rem;" ><i class="fa fa-phone"></i> 010-070-0170 </span>
-                        <spam style="color:white; font-size: 1.5rem;"><i class="fa fa-envelope-o"></i><a style="color:white;" href="#"> healthcenter@company.com </a></span>
+     <footer data-stellar-background-ratio="5" style="background-color: #b3d294">
+        <div class="container">
+             <div class="row">
+             <div class="col-md-12 col-sm-12 border-top">
+                    <div class="col-md-4 col-sm-6">
 
                     </div>
-                    <div class="col-md-4 col-sm-4" >
-                      
+                    <div class="col-md-6 col-sm-6">
+
                     </div>
-      </div>
-                    
+                    <div class="col-md-2 col-sm-2 text-align-center">
+                         <div class="angle-up-btn"> 
+                             <a href="#top" class="smoothScroll wow fadeInUp" data-wow-delay="1.2s"><i class="fa fa-angle-up"></i></a>
+                         </div>
+                    </div>   
                </div>
-          </div>
-     </footer>
+               <div class="col-md-4 col-sm-4"> </div>
+               <div class="col-md-4 col-sm-4">
+               <div class="footer-thumb"> 
+                      <center><h4 class="wow fadeInUp" data-wow-delay="0.4s" style="color:black;">Health Care</h4></center>
+                      <div class="col-md-3 col-sm-3"></div>
+                      <div class="col-md-9 col-sm-9">
+                         <div class="contact-info">
+                              <p style="color:black;"><i class="fa fa-phone"></i> 010-070-0170</p>
+                              <p style="color:black;"><i class="fa fa-envelope-o"></i> <a href="#" style="color:black;">info@company.com</a></p>
+                         </div>
+                         </div>
+                    </div>    
+                    </div>
+                    
+               <div class="col-md-4 col-sm-4">  </div>
+                    <div class="footer-thumb">
+             
+
+
+
+
+</div>
+</div>
+</footer>
 
    <script>
 function select()
