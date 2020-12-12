@@ -3,7 +3,32 @@
  session_start();
  $con=mysqli_connect('localhost','root','','healthcare');
  $user_id=$_SESSION['user_id'];
- 
+
+
+
+ if(isset($_GET['id']))
+{
+    $id = $_GET['id'];
+$query3="DELETE FROM `appointment` WHERE `appointment`.`id` = $id ";
+
+
+
+     $run2=mysqli_query($con,$query3);
+
+
+              if($run2)
+              { 
+                
+                echo '<script>alert("Cancelled Successfully")</script>';
+               
+
+                
+              }
+              else
+              echo '<script>alert("Failed Error has occured")</script>';
+
+         }           
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -117,11 +142,11 @@
               <!-- MENU LINKS -->
               <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right " style="color:rgb(64, 128, 0);">
-                         <li><a href="index.php"  style="font-size: 1.3rem;" class="smoothScroll">Home</a></li>
-                         <li><a href="findclinic.php" style="font-size: 1.3rem;" class="smoothScroll">Make an appointment</a></li>
-                         <li><a href="findlab.php" style="font-size: 1.3rem;" class="smoothScroll">Book Lab Testing</a></li>
-                         <li><a href="consultation.php" style="font-size: 1.3rem;" class="smoothScroll">Consultation</a></li>
-                         <li><a href="index.php?logout=T" style="font-size: 1.3rem;" class="smoothScroll">Log Out</a></li> 
+                         <li><a href="index.php"  style="color:#a5c422; font-size: 1.5rem;" class="smoothScroll">Home</a></li>
+                         <li><a href="findclinic.php" style="color:#a5c422; font-size: 1.5rem;" class="smoothScroll">Make an appointment</a></li>
+                         <li><a href="findlab.php" style="color:#a5c422; font-size: 1.5rem;" class="smoothScroll">Book Lab Testing</a></li>
+                         <li><a href="consultation.php" style="color:#a5c422; font-size: 1.5rem;" class="smoothScroll">Consultation</a></li>
+                         <li><a href="index.php?logout=T" style="color:#a5c422; font-size: 1.5rem;" class="smoothScroll">Log Out</a></li> 
                          
                     </ul>
                </div>
@@ -134,7 +159,7 @@
   <div class="row">
   <br>
   <br>
-  <div class="col-md-5 col-sm-5">        
+  <div class="col-md-4 col-sm-4">        
   <div id="user_image" class="text-align-center"> 
 
   </div>
@@ -149,6 +174,7 @@
    
     
     <br>
+
 
     <button type="submit" class="form-control"  id="update" onclick = "Openform()" name="submit" style="background-color: #a5c422;">Update/Add Addition Details</button>
 
@@ -419,7 +445,7 @@
   <div class="col-md-1 col-sm-1"></div>
 
 
-  <div class="col-md-6 col-sm-6">  
+  <div class="col-md-7 col-sm-7">  
   <h4>Name : <?php echo $row['Name']; ?></h4>
   <div class="row">
   <div class="col-md-6 col-sm-6">  
@@ -435,50 +461,19 @@
   <h5><b>Past Medications : </b><?php echo $row['past_medication']; ?></h5>
   <h3 style="color: #a5c422;">Past Appointments</h3>
   <br>
-  <div class="table-responsive" style="background-color: #f0f0f0;">
-  <table class="table table-borderless">
-  <thead>
-    <tr>
-    <th scope="col">Name</th>
-    <th scope="col">Doctor</th>
-    <th scope="col">Date</th>
-    <th scope="col">Time</th>
-    </tr>
-  </thead>
-  <tbody>
-  <?php
-  $query=$con->prepare("SELECT * FROM `appointment` WHERE `user_id`='$user_id'");
-  $query->execute();
-    $run= $query->get_result();
-    $row=$run->num_rows;
-  while($res=$run->fetch_assoc())
-  {
-    $doc_id=$res['doc_id'];
-    $query1=$con->prepare("SELECT * FROM `doctors` WHERE `id`='$doc_id'");
-$query1->execute();
-  $run1= $query1->get_result();
-  $res1=$run1->fetch_assoc();
-  ?>
-    <tr>
-      <th scope="row"><?php echo $res['name']; ?></th>
-      <td><?php echo $res1['name']; ?></td>
-      <td><?php echo $res['date']; ?></td>
-      <td><?php echo $res['time']; ?></td>
-    </tr>
-    <?php
-  }
-    ?>
-  </tbody>
-</table>
-</div>
 
+  
+     <table  class="table table-responsive" id="type" style="background-color: #f0f0f0;">
+           
+                
+        </table>    
 
 <?php
-  $query=$con->prepare("SELECT * FROM `labbook` WHERE `user_id`='$user_id'");
+  $query=$con->prepare("SELECT * FROM `labbook` WHERE `id`='$user_id'");
 $query->execute();
   $run= $query->get_result();
   $row=$run->num_rows;
- 
+  
   ?>
 
 <h3 style="color: #a5c422;">Past Lab Booking</h3>
@@ -523,6 +518,7 @@ $query1->execute();
 
 
   </div>
+
   <div class="col-md-1 col-sm-1">        
   </div>
   </div>
@@ -531,7 +527,7 @@ $query1->execute();
 </section>
 
 
-<!--<footer data-stellar-background-ratio="5" style="background-color: rgb(64, 128, 0);">
+<footer data-stellar-background-ratio="5" style="background-color: rgb(64, 128, 0);">
           <div class="container"  >
                <div class="row">
 
@@ -555,52 +551,123 @@ $query1->execute();
                     
                </div>
           </div>
-     </footer>-->
-<br>
-<br>
-<br>
-<br>
-<br>
-<footer data-stellar-background-ratio="5" style="background-color: #b3d294">
-        <div class="container">
-             <div class="row">
-             <div class="col-md-12 col-sm-12 border-top">
-                    <div class="col-md-4 col-sm-6">
-
-                    </div>
-                    <div class="col-md-6 col-sm-6">
-
-                    </div>
-                    <div class="col-md-2 col-sm-2 text-align-center">
-                         <div class="angle-up-btn"> 
-                             <a href="#top" class="smoothScroll wow fadeInUp" data-wow-delay="1.2s"><i class="fa fa-angle-up"></i></a>
-                         </div>
-                    </div>   
-               </div>
-               <div class="col-md-4 col-sm-4"> </div>
-               <div class="col-md-4 col-sm-4">
-               <div class="footer-thumb"> 
-                      <center><h4 class="wow fadeInUp" data-wow-delay="0.4s" style="color:black;">Health Care</h4></center>
-                      <div class="col-md-3 col-sm-3"></div>
-                      <div class="col-md-9 col-sm-9">
-                         <div class="contact-info">
-                                </div>
-                         </div>
-                    </div>    
-                    </div>
-                    
-               <div class="col-md-4 col-sm-4">  </div>
-                    <div class="footer-thumb">
-
-</div>
-</div>
-</footer>
+     </footer>
    <!-- SCRIPTS -->
    
 <script type="text/javascript">
-  function Openform() {
+
+ 
+
+
+OpenCancel();
+function Openform() {
   document.getElementById('form1').style.display = 'block';
 }
+
+function OpenCancel() {
+let tab = 
+    `
+    <thead >
+         <th scope="col">Name</th>
+        <th scope="col"> Doctor Name</th>
+        <th scope="col">Date</th>
+        <th scope="col">Time</th>
+        <th scope="col">Cancel</th>
+        
+        
+    </thead>`; 
+ <?php $query=$con->prepare("SELECT * FROM `appointment` WHERE `user_id`='$user_id'");
+  $query->execute();
+    $run= $query->get_result();
+    $row=$run->num_rows;
+
+
+  while($res=$run->fetch_assoc())
+  {
+
+    
+
+    $doc_id=$res['doc_id'];
+    $query1=$con->prepare("SELECT * FROM `doctors` WHERE `id`='$doc_id'");
+  $query1->execute();
+  $run1= $query1->get_result();
+  $res1=$run1->fetch_assoc(); ?>
+ 
+   
+ 
+  
+       
+
+   
+ var date="<?php echo $res['date'] ?>";
+
+        var ourDate = new Date();       
+        var str = ourDate.toString();
+        var s = str.substring(8,10);
+        var d= date.substring(8,10);         
+        console.log(d);
+        var booked=parseInt(d);
+        var today=parseInt(s);
+        console.log(booked);
+        if(booked>= today)
+          {   tab+=`<tbody>
+    <tr>
+      
+        
+        <td><?php echo $res['name'];?></td>
+        <td><?php echo $res1['name'];?></td>
+        <td> <?php echo $res['date']; ?></td>
+        <td><?php echo $res['time']; ?></td>
+        <td><a  href="profile.php?id=<?php echo $res['id']; ?>" class="btn btn-danger" role="button">Cancel</a></td>
+       
+        
+    </tr>
+    </tbody>`; 
+
+
+
+              
+          }
+
+          else
+          {
+            tab+=`<tbody>
+    <tr>
+      
+        
+        <td><?php echo $res['name'];?></td>
+        <td><?php echo $res1['name'];?></td>
+        <td><?php echo $res['date']; ?></td>
+        <td><?php echo $res['time']; ?></td>
+        <td></td>
+        
+    </tr>
+    </tbody>`; 
+
+            
+          }
+                    
+
+
+
+
+
+      
+       
+
+
+      
+      
+      
+document.getElementById("type").innerHTML = tab; 
+ 
+    <?php
+  } 
+    ?>
+ 
+  
+
+ }
 
 
 var checkList = document.getElementById('list1');
