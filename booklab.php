@@ -212,49 +212,31 @@ if(isset($_POST['submit']))
          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3647.3030413476204!2d100.5641230193719!3d13.757206847615207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf51ce6427b7918fc!2sG+Tower!5e0!3m2!1sen!2sth!4v1510722015945" width="100%" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
      </section> 
 
+<footer data-stellar-background-ratio="5" style="background-color: rgb(64, 128, 0);">
+          <div class="container"  >
+               <div class="row">
 
-     <footer data-stellar-background-ratio="5" style="background-color: #c5d5c5;">
-        <div class="container">
-             <div class="row" >
-             <div class="col-md-12 col-sm-12 border-top">
-                    <div class="col-md-4 col-sm-6">
-                        
+                <div class="col-md-12 col-sm-12 text-align-center">
+                              <div class="angle-up-btn"> 
+                                  <a href="#top" class="smoothScroll wow fadeInUp" data-wow-delay="1.2s"><i class="fa fa-angle-up"></i></a>
+                              </div>
+                   </div>
+                <div class="col-md-4 col-sm-4" ></div>
+                    <div class="col-md-4 col-sm-4"  >
+                        <h2 style="color:white;" class="text-align-center"> Health Care</h2>
+                        <br>
+                        <span style="color:white; font-size: 1.5rem;" ><i class="fa fa-phone"></i> 010-070-0170 </span>
+                        <spam style="color:white; font-size: 1.5rem;"><i class="fa fa-envelope-o"></i><a style="color:white;" href="#"> healthcenter@company.com </a></span>
+
                     </div>
-                    <div class="col-md-6 col-sm-6">
-                         
+                    <div class="col-md-4 col-sm-4" >
+                      
                     </div>
-                    <div class="col-md-2 col-sm-2 text-align-center">
-                         <div class="angle-up-btn"> 
-                             <a href="#top" class="smoothScroll wow fadeInUp" data-wow-delay="1.2s"><i class="fa fa-angle-up"></i></a>
-                         </div>
-                    </div>   
+      </div>
+                    
                </div>
-               <div class="col-md-3 col-sm-3"> </div>
-               <div class="col-md-4 col-sm-4">
-               <div class="footer-thumb"> 
-                         <h4 class="wow fadeInUp" data-wow-delay="0.4s" style="color:black;">Contact Info</h4>
-                         <p style="color:black;">Fusce at libero iaculis, venenatis augue quis, pharetra lorem. Curabitur ut dolor eu elit consequat ultricies.</p>
-
-                         <div class="contact-info">
-                              <p style="color:black;"><i class="fa fa-phone"></i> 010-070-0170</p>
-                              <p style="color:black;"><i class="fa fa-envelope-o"></i> <a href="#" style="color:black;">info@company.com</a></p>
-                         </div>
-                    </div>    
-               </div>
-               <div class="col-md-4 col-sm-4"> 
-                    <div class="footer-thumb">
-                         
-                    </div>
-               </div>
-               <div class="col-md-1 col-sm-1"> </div>
-
-
-               
-                  
-             </div>
-        </div>
-   </footer>
-  
+          </div>
+     </footer>
 
 
    <script>
