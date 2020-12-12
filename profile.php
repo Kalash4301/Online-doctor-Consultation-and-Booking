@@ -116,12 +116,12 @@
 
               <!-- MENU LINKS -->
               <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                         <li><a href="index.php" class="smoothScroll">Home</a></li>
-                         <li><a href="findclinic.php" class="smoothScroll">Make an appointment</a></li>
-                         <li><a href="findlab.php" class="smoothScroll">Book Lab Testing</a></li>
-                         <li><a href="consultation.php" class="smoothScroll">Consultation</a></li>
-                         <li><a href="index.php?logout=T" class="smoothScroll">Log Out</a></li> 
+                    <ul class="nav navbar-nav navbar-right " style="color:rgb(64, 128, 0);">
+                         <li><a href="index.php"  style="color:#a5c422; font-size: 1.5rem;" class="smoothScroll">Home</a></li>
+                         <li><a href="findclinic.php" style="color:#a5c422; font-size: 1.5rem;" class="smoothScroll">Make an appointment</a></li>
+                         <li><a href="findlab.php" style="color:#a5c422; font-size: 1.5rem;" class="smoothScroll">Book Lab Testing</a></li>
+                         <li><a href="consultation.php" style="color:#a5c422; font-size: 1.5rem;" class="smoothScroll">Consultation</a></li>
+                         <li><a href="index.php?logout=T" style="color:#a5c422; font-size: 1.5rem;" class="smoothScroll">Log Out</a></li> 
                          
                     </ul>
                </div>

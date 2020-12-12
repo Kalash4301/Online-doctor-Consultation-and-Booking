@@ -84,8 +84,8 @@ if(isset($_POST['submit']))
               <!-- MENU LINKS -->
               <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                    <li><a href="doctprofile.php" class="smoothScroll">My Profile</a></li> 
-                    <li><a href="index.php?logout=T" class="smoothScroll">Log Out</a></li> 
+                    <li><a href="doctprofile.php" style="color:#a5c422; font-size: 1.5rem;" class="smoothScroll">My Profile</a></li> 
+                    <li><a href="index.php?logout=T" style="color:#a5c422; font-size: 1.5rem;"class="smoothScroll">Log Out</a></li> 
                          
                     </ul>
                </div>

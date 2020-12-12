@@ -148,10 +148,10 @@ http://www.tooplate.com/view/2098-health
                <!-- MENU LINKS -->
                <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                         <li><a href="#top" class="smoothScroll">Home</a></li>
-                         <li><a href="findclinic.php" class="smoothScroll">Make an appointment</a></li>
-                         <li><a href="findlab.php" class="smoothScroll">Book Lab Testing</a></li>
-                         <li><a href="consultation.php" class="smoothScroll">Consultation</a></li>
+                         <li><a href="#top" style="color:#a5c422; font-size: 1.5rem;" class="smoothScroll">Home</a></li>
+                         <li><a href="findclinic.php" style="color:#a5c422; font-size: 1.5rem;" class="smoothScroll">Make an appointment</a></li>
+                         <li><a href="findlab.php" style="color:#a5c422; font-size: 1.5rem;"  class="smoothScroll">Book Lab Testing</a></li>
+                         <li><a href="consultation.php" style="color:#a5c422; font-size: 1.5rem;" class="smoothScroll">Consultation</a></li>
                          <?php
                          if(isset($_SESSION['user_id']))
                          {
@@ -162,8 +162,8 @@ http://www.tooplate.com/view/2098-health
                               $row=$run->fetch_assoc();
                               $mail= $row['email'];
                               ?>
-                              <li><a href="profile.php" class="smoothScroll"><?php echo $mail; ?></a></li>
-                              <li><a href="index.php?logout=T" class="smoothScroll">Log Out</a></li> 
+                              <li><a href="profile.php" style="color:#a5c422; font-size: 1.2rem;"class="smoothScroll"><?php echo $mail; ?></a></li>
+                              <li><a href="index.php?logout=T" style="color:#a5c422; font-size: 1.5rem;" class="smoothScroll">Log Out</a></li> 
                               <?php
                          }
                          else
@@ -174,7 +174,7 @@ http://www.tooplate.com/view/2098-health
                          }
                          ?>
                          
-                         <li><a href="#about" class="smoothScroll">About Us</a></li>
+                         <li><a href="#about" style="color:#a5c422; font-size: 1.5rem;" class="smoothScroll">About Us</a></li>
                          
                     </ul>
                </div>

@@ -88,9 +88,9 @@ if(isset($_POST['submit']))
               <!-- MENU LINKS -->
               <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                         <li><a href="index.php" class="smoothScroll">Home</a></li>
+                         <li><a href="index.php" style="color:#a5c422; font-size: 1.5rem;" class="smoothScroll">Home</a></li>
                          
-                         <li><a href="#about" class="smoothScroll">About Us</a></li>
+                         <li><a href="#about" style="color:#a5c422; font-size: 1.5rem;" class="smoothScroll">About Us</a></li>
                          
                     </ul>
                </div>
