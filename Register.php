@@ -197,7 +197,7 @@ if(isset($_POST['submit']))
                <div class="col-md-4 col-sm-4"> </div>
                <div class="col-md-4 col-sm-4">
                <div class="footer-thumb"> 
-                      <center><h4 class="wow fadeInUp" data-wow-delay="0.4s" style="color:black;">Health Care</h4></center>
+                      <center><h4 class="wow fadeInUp" data-wow-delay="0.4s" style="color:black;">Health Center</h4></center>
                       <div class="col-md-3 col-sm-3"></div>
                       <div class="col-md-9 col-sm-9">
                          <div class="contact-info">
